@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+
+		<meta charset=utf-8 />
+		<title>DataTables - JS Bin</title>
+	</head>
+	<style>
+		body {
+			font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #333;
+			background-color: #fff;
+		}
+
+
+		div.container {
+			min-width: 980px;
+			margin: 0 auto;
+		}
+
+		td.details-control {
+		    background: url('https://www.datatables.net/examples/resources/details_open.png') no-repeat center center;
+		    cursor: pointer;
+		}
+		tr.shown td.details-control {
+		    background: url('https://www.datatables.net/examples/resources/details_close.png') no-repeat center center;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<table id="example" class="display" width="100%">
+				<thead>
+					<tr>
+						<th></th>
+						<th>codDoc</th>
+						<th>title</th>
+						<th>data</th>
+						<th>parent</th>
+					</tr>
+				</thead>
+
+			</table>
+		</div>
+	</body>
+	<script>
+		function format ( d ) {
+			// `d` is the original data object for the row
+			//console.log(d);
+		  var tr = '';
+		  
+		  d.childDocs.forEach(function (item) {
+		  tr += '<tr>'+
+		            '<td>codDoc:</td>'+
+		            '<td>'+item.codDoc+'</td>'+
+		        '</tr>'+
+		        '<tr>'+
+		            '<td>title:</td>'+
+		            '<td>'+item.title+'</td>'+
+		        '</tr>';
+
+		  });
+		  
+		    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+		      tr +
+		      '</table>';
+		}
+
+		var test = [
+		    {
+				"codDoc": 1,
+				"title": "Parent 1",
+				"dateCreation": "1999-01-01T00:00:00",
+				"childDocs": [
+				    {
+				        "codDoc": 2,
+				        "title": "Child of Parent 1",
+				        "dateCreation": "1999-01-01T00:00:00",
+				        "childDocs": null,
+				        "parent": false
+				    },
+				    {
+				        "codDoc": 3,
+				        "title": "Child of Parent 2",
+				        "dateCreation": "1999-01-06T00:00:00",
+				        "childDocs": null,
+				        "parent": false
+				    }
+				],
+				"parent": true
+			},
+		    {
+				"codDoc": 1,
+				"title": "Parent 1",
+				"dateCreation": "1999-01-01T00:00:00",
+				"childDocs": [
+				    {
+				        "codDoc": 2,
+				        "title": "Child of Parent 1",
+				        "dateCreation": "1999-01-01T00:00:00",
+				        "childDocs": null,
+				        "parent": false
+				    },
+				    {
+				        "codDoc": 3,
+				        "title": "Child of Parent 2",
+				        "dateCreation": "1999-01-06T00:00:00",
+				        "childDocs": null,
+				        "parent": false
+				    }
+				],
+				"parent": true
+			},
+		    {
+				"codDoc": 1,
+				"title": "Parent 1",
+				"dateCreation": "1999-01-01T00:00:00",
+				"childDocs": [
+				    {
+				        "codDoc": 2,
+				        "title": "Child of Parent 1",
+				        "dateCreation": "1999-01-01T00:00:00",
+				        "childDocs": null,
+				        "parent": false
+				    },
+				    {
+				        "codDoc": 3,
+				        "title": "Child of Parent 2",
+				        "dateCreation": "1999-01-06T00:00:00",
+				        "childDocs": null,
+				        "parent": false
+				    }
+				],
+				"parent": true
+			},
+		];
+
+
+		$(document).ready(function() {
+			var table = $('#example').DataTable( {
+		      data: test,
+		      order: [[1, 'asc']],
+		      columns: [
+		            {
+		                className:      'details-control',
+		                orderable:      false,
+		                data:           null,
+		                defaultContent: ''
+		            },
+		            { data: "codDoc" },
+		            { data: "title" },
+		            { data: "dateCreation" },
+		            { data: "parent" }
+		        ],
+			} );
+
+		    // Add event listener for opening and closing details
+		    $('#example tbody').on('click', 'td.details-control', function () {
+		        var tr = $(this).closest('tr');
+		        var row = table.row( tr );
+		 
+		        if ( row.child.isShown() ) {
+		            // This row is already open - close it
+		            row.child.hide();
+		            tr.removeClass('shown');
+		        }
+		        else {
+		            // Open this row
+		            d = row.data();
+		            row.child( format(d) ).show();
+		            tr.addClass('shown');
+		        }
+		    } );
+
+		} );
+	</script>
+</html>
