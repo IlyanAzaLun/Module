@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>we</title>
+	<style>
+		body {
+			font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #333;
+			background-color: #fff;
+		}
+
+
+		div.container {
+			min-width: 980px;
+			margin: 0 auto;
+		}
+
+		td.details-control {
+		    /*background: url('https://www.datatables.net/examples/resources/details_open.png') no-repeat center center;*/
+		    background: green no-repeat center center;
+		    cursor: pointer;
+		}
+		tr.shown td.details-control {
+		    /*background: url('https://www.datatables.net/examples/resources/details_close.png') no-repeat center center;*/
+		    background: grey no-repeat center center;
+		}
+	</style>
+
+    <script src="http://localheart/Module/assets/vendor/jquery/jquery-1.11.3.min.js" ></script>
+
+    <link href="http://localheart/Module/assets/vendor/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+    <script src="http://localheart/Module/assets/vendor/datatables/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<table id="example" class="display" width="100%">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Question</th>
+					<th>Created at</th>
+					<th>Updated at</th>
+				</tr>
+			</thead>
+
+		</table>
+	</div>
+</body>
+    <script src="./app.js"></script>
+</html>

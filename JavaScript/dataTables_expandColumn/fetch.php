@@ -1,5 +1,5 @@
 <?php 
-include '../Databases.php';
+include '../../config/Databases.php';
 
 function questions(){
 	$db = new Database();
@@ -19,12 +19,6 @@ function answers($id){
 foreach (questions() as $key => $value) {
 	$value['id'] = answers($value['id']);
 	$data[] = $value;
-	// array_push($data, $value);
 }
-// echo "<pre>";
-// print_r($data);
-// echo "<pre>";
 echo json_encode($data);
-// echo "</pre>";
-
 ?>

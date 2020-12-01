@@ -1,6 +1,6 @@
 <!-- request.php -->
 <?php
-include '../Databases.php';
+include '../../config/Databases.php';
 function genRandom($len = 1){
 	$characters = '0123456789';
 	$charactersLen = strlen($characters);
@@ -20,14 +20,13 @@ function reqIdNotUsed($random){
 }
 
 function request(){
-	
 	$random = genRandom();
-	echo('My data :'.$random.' <br>');
 
 	if(!reqIdNotUsed($random)){
-	echo('My data :'.$random.' is Accept');
+	echo('my Number :'.$random.' is Accept');
 	}else{
-		request();
+		echo('my Number :'.$random.' Available <br>');
+		call_user_func(__FUNCTION__);
 	}
 }
 print_r(request());

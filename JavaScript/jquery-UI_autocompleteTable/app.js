@@ -14,7 +14,7 @@ $.ui.autocomplete.prototype._renderItemData = function(ul,table, item) {
 $.ui.autocomplete.prototype._renderItem = function(table, item) {
   return $( "<tr class='ui-menu-item' role='presentation'></tr>" )
     //.data( "item.autocomplete", item )
-    .append( "<td >"+item.item_id+"</td>"+"<td>"+item.item_name+"</td>"+"<td>"+item.item_category_id+"</td>" ) // change this
+    .append( "<td >"+item.username+"</td>"+"<td>"+item.name+"</td>"+"<td>"+item.email+"</td>" ) // change this
     .appendTo( table );
 };
 
@@ -34,11 +34,10 @@ $( "#project" ).autocomplete({
             });
         },
     
-	focus: function( event, ui ) {
-		console.log(ui.item.item_name);
-    $( "#project" ).val( ui.item.item_name );                                                                   // change this
-		$( "#project-id" ).val( ui.item.item_id );                                                                  // change this
-		$( "#project-description" ).html( ui.item.item_category_id );                                               // change this
+	select: function( event, ui ) {
+    $( "#project" ).val( ui.item.name );                                                                   // change this
+		$( "#project-id" ).val( ui.item.username );                                                                  // change this
+		$( "#project-description" ).html( ui.item.email );                                               // change this
 		return false;
 	}//you can write for select too
     /*select:*/
