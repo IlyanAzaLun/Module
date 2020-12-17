@@ -3,17 +3,23 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=100%, initial-scale=1.0">
-	<title>autocomplete</title>
+	<title>TRY AJAX REQUEST</title>
 	<link rel="stylesheet" href="http://localheart/Module/assets/vendor/jquery/jquery-ui-1.12.1.custom/jquery-ui.css">
 </head>
 <body>
-	<div id="project-label">Select a project (type "s" for a start):</div>
-	<input id="project">
-	<input type="hidden" id="project-id">
-	<p id="project-description"></p>
+	<p id="try"></p>
 </body>
 <script type="text/javascript" src="http://localheart/Module/assets/vendor/jquery/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="http://localheart/Module/assets/vendor/jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-<script type="text/javascript" src="http://localheart/Module/JavaScript/script/ajax-request.js"></script>
-<script type="text/javascript" src="./app.js"></script>
+<script type="text/javascript" src="./ajax-request.js"></script>
+<script type="text/javascript">
+	const request = new AJAX('./fetch.php', '', 'POST', 'json');
+	const data = [];
+	data['term'] = 'OK';
+	request.data = {term: data.term};
+	AJAX.prototype.staticFunction = (data) => {
+	response(data);
+	}
+	request.requestAJAX();
+</script>
 </html>
