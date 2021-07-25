@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dynamic Chart</title>
+
+	<!-- CDN -->
+	<!-- 
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+	 -->
+	<!-- Own Script -->
+	<script type="text/javascript" src="http://localhost/2020/Module/assets/vendor/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://localhost/2020/Module/JavaScript/script/ajax-request.js"></script>
+	
+	<script type="text/javascript" src="http://localhost/2020/Module/assets/vendor/chart.js/Chart.bundle.min.js"></script>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+</head>
+<body>
+	<div class="container">
+		<h2 class="text-center mt-4 mb-3"></h2>
+
+		<div class="card">
+			<div class="card-header">Simple Survey</div>
+			<div class="card-body">
+				<div class="form-group">
+					<h2 class="mb-4"></h2>
+					<div class="form-check">
+						<input type="radio" class="form-check-input" name="PL" class="PL" id="PL-1" value="PHP">
+						<label for="PL-1" class="form-check-label mb-2">PHP</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" class="form-check-input" name="PL" class="PL" id="PL-2" value="Python">
+						<label for="PL-2" class="form-check-label mb-2">Python</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" class="form-check-input" name="PL" class="PL" id="PL-3" value="Java">
+						<label for="PL-3" class="form-check-label mb-2">Java</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="button" name="sumbit" class="btn btn-primary" id="submit">Submit</button>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card-header">Pie Chart</div>
+					<div class="card-body">
+						<div class="chart-container pie-chart">
+							<canvas id="pie-chart"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card-header">Doughtnut Chart</div>
+					<div class="card-body">
+						<div class="chart-container doughnut-chart">
+							<canvas id="doughnut-chart"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card-header">Bar Chart</div>
+					<div class="card-body">
+						<div class="chart-container bar-chart">
+							<canvas id="bar-chart"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="app.js"></script>
+</html>

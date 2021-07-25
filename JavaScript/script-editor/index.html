@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML Editor with instant preview demo</title>
+	<meta name="google" content="notranslate">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="http://localhost/2020/Module/assets/vendor/codemirror/css/codemirror.min.css">
+	<link rel="stylesheet" href="http://localhost/2020/Module/assets/vendor/codemirror/css/monokai.min.css">
+	<script src="http://localhost/2020/Module/assets/vendor/codemirror/js/codemirror.min.js"></script>
+	<script src="http://localhost/2020/Module/assets/vendor/codemirror/js/xml.min.js"></script>
+	<script src="http://localhost/2020/Module/assets/vendor/codemirror/js/javascript.min.js"></script>
+	<script src="http://localhost/2020/Module/assets/vendor/codemirror/js/css.min.js"></script>
+	<script src="http://localhost/2020/Module/assets/vendor/codemirror/js/htmlmixed.min.js"></script>
+	<style>
+		html {
+			height: 100%;
+		}
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-family: "Georgia", "Arial", "Serif";
+			width: 100%;
+			position: relative;
+			min-height: 100%;
+			box-sizing: border-box;
+			height: 100%;
+			color: #999;
+			background-color: #272822;
+		}
+		h2.title {
+			display: block;
+			width: 100%;
+			padding: 0.5em 0.5em 0.5em 1em;
+			font-size: 1.2em;
+			font-weight: normal;
+			box-sizing: border-box;
+		}
+		.text-center {
+			text-align: center;
+		}
+		.hide {
+			display: none;
+		}
+		.border-bottom {
+			border-bottom: 1px solid #333;
+		}
+		.editor, .preview {
+			height: 100%;
+			width: 100%;
+			position: relative;
+			box-sizing: border-box;
+		}
+		.editor #code-editor {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #f1f1f1;
+			font-family: monospace;
+			font-size: 18px;
+		}
+		.preview #preview-frame {
+			height: 100%;
+			width: 100%;
+			border: none;
+			background-color: #fff;
+		}
+		@media screen and (min-width: 720px) {
+			.editor {
+				width: 50%;
+				float: left;
+				padding-bottom: 0;
+			}
+			.menu {
+				width: 300px;
+				border-right: 1px dotted #999;
+				border-bottom: 1px dotted #999;
+			}
+			.preview {
+				width: 50%;
+				float: left;
+			}
+			.full-width {
+				width: 100%;
+				float: initial;
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- EDITOR WINDOW -->
+	<div class="editor">
+		<h2 class="title text-center border-bottom">HTML Editor</h2>
+		<textarea id="code-editor"></textarea>
+	</div>
+
+	<!-- PREVIEW WINDOW -->
+	<div class="preview">
+		<h2 class="title text-center border-bottom">Preview</h2>
+		<iframe id="preview-frame"></iframe>
+	</div>
+</body>
+<!-- <script>
+	var $ = function(el) {
+		return document.querySelector(el);
+	};
+
+	function updatePreview(html)
+	{
+		$('#preview-frame').contentWindow.document.open();
+		$('#preview-frame').contentWindow.document.write(html);
+		$('#preview-frame').contentWindow.document.close();
+	}
+
+	$('#code-editor').addEventListener('input', function(e) {
+		updatePreview(this.value);
+	});
+
+	window.addEventListener('beforeunload', function(e)
+	{
+		if (e) {
+    // Cancel the event
+    e.preventDefault();
+    // Chrome requires returnValue to be set
+    e.returnValue = '';
+}
+
+return 'Are you sure want to exit?';
+});
+</script> -->
+<script>
+var $ = function(el) {
+    return document.querySelector(el);
+};
+
+function updatePreview(html)
+{
+    $('#preview-frame').contentWindow.document.open();
+    $('#preview-frame').contentWindow.document.write(html);
+    $('#preview-frame').contentWindow.document.close();
+}
+
+window.addEventListener('beforeunload', function(e)
+{
+  if (e) {
+    // Cancel the event
+    e.preventDefault();
+    // Chrome requires returnValue to be set
+    e.returnValue = '';
+  }
+
+  return 'Are you sure want to exit?';
+});
+
+window.addEventListener('DOMContentLoaded', function(e) {
+  cm = CodeMirror.fromTextArea($('#code-editor'), {
+      lineNumbers: true,
+      styleActiveLine: true,
+      mode: 'text/html',
+      theme: 'monokai'
+  });
+
+  cm.on('change', function() {
+      updatePreview(cm.getValue());
+  });
+
+  updatePreview(cm.getValue());
+});
+</script>
+</html>

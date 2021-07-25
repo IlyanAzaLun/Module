@@ -24,7 +24,6 @@ class AJAX {
 	}
 }
 
-
 // const request = new AJAX('http://localheart/Module/JavaScript/script/fetch.php', '', 'GET', 'json')
 // AJAX.prototype.staticFunction = (...data)=>{
 // 	for(value of data){
