@@ -4,7 +4,7 @@ include '../../config/Databases.php';
 
 function search($term){
 	$db = new Database();
-	$db->query('SELECT * FROM users WHERE name LIKE :term');
+	$db->query('SELECT * FROM tbl_items WHERE name LIKE :term');
 	$db->bind('term', '%'.$term.'%');
 	$db->execute();
 	return $db->resultSet();

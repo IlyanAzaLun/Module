@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Webslesson Demo - Dynamically Add or Remove input fields in PHP with JQuery</title>
+	<!-- Own Script -->
+	<script type="text/javascript" src="http://localhost/2020/Module/assets/vendor/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://localhost/2020/Module/JavaScript/script/ajax-request.js"></script>
+	
+	<script type="text/javascript" src="http://localhost/2020/Module/assets/vendor/chart.js/Chart.bundle.min.js"></script>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+</head>
+	<body>
+		<div class="container">
+			<br />
+			<br />
+			<h2 align="center"><a href="http://www.webslesson.info/2016/02/dynamically-add-remove-input-fields-in-php-with-jquery-ajax.html" title="Dynamically Add or Remove input fields in PHP with JQuery">Dynamically Add or Remove input fields in PHP with JQuery</a></h2><br />
+			<div class="form-group">
+				<form name="add_name" id="add_name">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dynamic_field">
+							<tr>
+								<td><input type="text" name="name[]" placeholder="Enter language to input" class="form-control name_list" /></td>
+								<td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+							</tr>
+						</table>
+						<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script src="app.js"></script>
+</html>

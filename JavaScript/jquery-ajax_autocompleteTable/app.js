@@ -9,7 +9,7 @@ $(function() {
     return this._renderItem( table, item ).data( "ui-autocomplete-item", item );
   };$.ui.autocomplete.prototype._renderItem = function(table, item) {
   return $( "<tr class='ui-menu-item' role='presentation'></tr>" )
-    .append( "<td >"+item.username+"</td>"+"<td>"+item.name+"</td>"+"<td>"+item.email+"</td>" ) // change this
+    .append( "<td >"+item.id+"</td>"+"<td>"+item.name+"</td>"+"<td>"+item.value+"</td>" ) // change this
     .appendTo( table );
   };$( "#project" ).autocomplete({
       minLength: 1,
@@ -22,8 +22,8 @@ $(function() {
       },
       select: function( event, ui ) {
         $( "#project" ).val( ui.item.name );                                                                   // change this
-    		$( "#project-id" ).val( ui.item.username );                                                                  // change this
-    		$( "#project-description" ).html( ui.item.email );                                               // change this
+    		$( "#project-id" ).val( ui.item.id );                                                                  // change this
+    		$( "#project-description" ).html( ui.item.value );                                               // change this
     		return false;
     	}
     });
